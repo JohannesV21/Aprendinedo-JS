@@ -1,0 +1,45 @@
+        ************* String Methods **************************
+
+.length = se utiliza para contar la longitud del String
+.indexof = se utiliza para saber la existencia/posicion de una palabra/letra en una cadena de texto. Si no existe arroja -1
+.includes = se utiliza para saber si existe una palabra/letra, retorna un valor booleano
+.concat = para concatenar
+.trimStart =  para eliminar espacios en blanco al inicio de una cadena de texto
+.trimEnd =  para eliminar espacios en blanco al final de una cadena de texto
+.trim = borra espacios al incio y al final de una cadena de texto
+.replace('hola' 'hello') = remplaza un fragmento de la cedena de texto por otro
+.slice(0, 10) = corta un fragmento de la cadena de texto. (inicio, fin)
+.substring = 
+.charAt(0) = Extrae la letra que la indiques segun su posicion. (posicionIndex)
+.repeat(2) = repite una cadena de texto segun el numero de veces que se le indique
+.split(' ') = te permite dividir un string por el parametro que le pases, los devuelve en un array
+.toUpperCase = para colocar una cadena de texto en mayusculas
+.toLowerCase = para colocar una cadena de texto en minusculas
+.toString = para convertir numeros a cadenas de texto
+
+
+TemplateStrings = `Esto es un TemplateStrings ${variable}`
+
+        ************* Numeros ************************** 
+
+objeto Math=
+
+.round(2.6) = redondea segun sea el caso
+.ceil(2.1) = redondea hacia arriba
+.floor(2.9) = redondea hacia abajo
+.sqrt(144) = raiz cuadrada
+.abs = se trae el valor absoluto indiferentemente si el numero es negativo
+.pow(8, 3) = saca la potencia de un numero
+.min() = saca el numero menor
+.max() = saca el numero mayor
+.random = da numeros aleatorios del 0 al 1 mayormente simpre salen negativos
+
+puntaje = 5;
+
+punaje++; // 5
+++punaje; // 6
+
+
+
+
+
