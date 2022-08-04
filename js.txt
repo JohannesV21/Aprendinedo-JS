@@ -39,7 +39,70 @@ puntaje = 5;
 punaje++; // 5
 ++punaje; // 6
 
+        ************* Objetos *************************** 
 
+*Sintaxis de object literal:
+
+const producto = {
+        nombre: 'Monitor 20 Pulgadas',
+        precio: 300,
+        disponible = true
+}
+
+las variables nombre, precio, disponible que estan dentro del objeto son conocidas como propiedades 
+
+-para agregar una propiedad al objeto: 
+producto.imagen = "imagen.jpg";
+
+-para borrar una imagen al objeto:
+delete producto.disponible;
+
+*Object Destructuring:
+
+-forma antigua:
+
+const nombre = producto.nombre;
+
+-forma nueva:
+
+const { nombre } = producto;
+
+*Destructuring de objetos anidados (objecto dentro de otro objeto):
+
+const producto = {
+        nombre: 'Monitor 20 Pulgadas',
+        precio: 300,
+        disponible = true
+        informacion: {
+                medidas: "1m",
+                peso: "1kg"
+        },
+        fabricacion: {
+                pais: "china"
+        }
+}
+
+const {nombre, informacion: {fabricacion: {pais}}}
+
+* Objects Methods:
+-object.freeze(producto);  = paraliza el objeto haciendo que no se puedean agg/borrar/modificar propiedades del mismo
+-object.isFrozen(producto) = devuelve un boleano, se usa para confirmar si un objeto esta bajo el metodo freeze
+-object.seal(producto) = no se puede agg/borrar propiedades del objeto pero si se pueden modificar
+-object.isSeal(producto) = devuelve un boleano, se usa para confirmar si un objeto esta bajo el metodo seal
+
+* Como unir dos Objetos:
+
+const resultado = Object.assign(producto, medidas);
+
+-*Spread Operator:
+
+const resultado2 = {...producto, ...medidas};
+
+* Object Constructor 
+
+
+DATO: Cuando abre con llaves es un objeto y cuando abre con corchetes es un arrays
+DATO: Los objetos se pueden sobreescribir
 
 
 
