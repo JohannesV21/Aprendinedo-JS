@@ -89,6 +89,9 @@ const {nombre, informacion: {fabricacion: {pais}}}
 -object.isFrozen(producto) = devuelve un boleano, se usa para confirmar si un objeto esta bajo el metodo freeze
 -object.seal(producto) = no se puede agg/borrar propiedades del objeto pero si se pueden modificar
 -object.isSeal(producto) = devuelve un boleano, se usa para confirmar si un objeto esta bajo el metodo seal
+-object.keys(producto) = devuelve un arrays con las propiedades de los objetos, suele utilizar para saber si un objeto esta vacio
+-object.values(producto) = retorna en un array los valores de las propiedades de los objetos
+-object.entries(producto) = retorna en un array la propiedad seguido de su valor 
 
 * Como unir dos Objetos:
 
@@ -98,11 +101,215 @@ const resultado = Object.assign(producto, medidas);
 
 const resultado2 = {...producto, ...medidas};
 
+* Palabra this
+
+Se emplea para utilizar los datos que estan dentro de un objeto o funcion, utilizarlos dentro de ella
+
+
 * Object Constructor 
 
+function Producto(nombre, precio){
+        this.nombre = nombre;
+        this.precio = precio;
+        this.disponible = true;
+}
+
+const producto2 = new Producto('Monitor 24 pulgadas', 500);
 
 DATO: Cuando abre con llaves es un objeto y cuando abre con corchetes es un arrays
 DATO: Los objetos se pueden sobreescribir
 
 
+                ************* Arrays ************************** 
+
+* Sintaxis para acceder a las posiciones de un array
+
+const numeros = [1,43,23,65,878, [32,345,787,987]];
+
+numeros[3] // output = 65
+numeros[5][1] // output = 345 
+
+* Arrays Methods
+
+Pudes modificar valores dentro del array con tan solo colocar el nombre y el indice. Ej:
+
+numeros[3] = 17 
+
+.push() = agrega elementos al final del arrays
+.unshift() = para agregar elementos al principio del arrays
+.pop() = eliminar ultimo elemento de un arreglo
+.shift() = elimina el primero del arrays
+.splice(2, 1) = toma dos parametros, el primero indica la posicion del indice en la cual deseas empezar a eliminar elemenos, mientras que el segundo parametro indica la cantidad de elementos que deseas eliminar.
+
+resultado = [...numeros]; estamos creando un arreglo nuevo con los valores existentes dentro de carrito
+
+imperativa modifica el arreglo actual mientras que declarativa crea un nuevo arreglo y no modifica el original
+
+* Destructuring de Arrays
+
+const numeros = [10,20,30,40,50];
+
+const [a, b] = numeros;   // Extrae en la variables a y b las posicion 0 y 1 del arrays
+
+const [, , a] = numeros;  // extraemos la tercera posicion del arrays a = 30
+
+const [a, , ...b] = numeros;  // Extrae la poscion 0 y la guarda en la variable a, en variable b crea un nuevo arreglo con 30,40,50
+
+
+* forEach en Arrays
+
+const carrito = [
+  { nombre: 'Monitor 27"', precio: "500" },
+  { nombre: "teclado", precio: "300" },
+  { nombre: "Xiaomi Mi 10", precio: "3500" },
+  { nombre: "Xiaomi Mi 9", precio: "2350" },
+  { nombre: 'Laptop Lenovo"', precio: "6500" },
+  { nombre: 'Mouse"', precio: "100" },
+  { nombre: 'Audifonos"', precio: "200" },
+];
+
+carrito.forEach(function (producto) {
+  console.log(
+    `El Producto: ${producto.nombre} tiene un costo de ${producto.precio}`
+  );
+});
+
+El parametro "producto" de la funcion, almacena una posicion del arrays por cada vuelta del forEach
+
+* map en Arrays
+posee la misma Sintaxis que forEach con la diferecia de que map tiene la capacidad de crear un nuevo arreglo si lo asignas a una variable. Ej:
+
+const nuevoArreglo = carrito.map(function (producto) {
+  
+ return `El Producto: ${producto.nombre} tiene un costo de ${producto.precio}`
+  
+});
+
+DATO: Tanto en arreglos como en objetos se pueden modificar sus valores sin importar si estan declarados en una variable const
+
+
+                 
+
+Son una serie de pocedimientos o instrucciones
+
+* Ventajas:
+-Permiten tener un codigo mas ordenado y mas facil de mantener.
+-Son reutilizables
+
+* Declaracion de funcion / Function Declaration:
+
+function sumar(){
+        console.log(2+2);
+}
+
+sumar(); // Llamado de la funcion
+
+* Expresion de funcion / Function Expression
+
+const sumar2 = function() {
+        console.log(3+3);
+}
+
+sumar2(); // Llamado de la funcion
+
+**Diferencia entre una funcion y un metodo**
+
+nombre seguido de parentesis y un argumento dentro de esos parentesis es una funcion. Ej:
+
+parseInt(numero2) // esto es una funcion
+
+
+-nombre de una variable seguido de un punto, se le conoce como metodo. Ej:
+
+numero1.toString() // Esto es un metodo
+
+* Parametros y Argumentos en Funciones
+
+function sumar(a,b){   // a y b son parametros
+        console.log(2+2);
+}
+
+sumar(17, 21);  // 17 y 21 son Argumentos
+
+Los parametros son los datos que recibe una funcion mientras que los argumentos son los datos que se la pasan a una funcion.
+
+* Parametros por Default
+
+function saludar(nombre, apellido = ' '){
+        console.log(`Hola ${nombre} ${apellido}`);
+}
+
+en este caso apellido = ' ' es un parametro por default, que actuara en caso de que no se le pase ningun argumento, imprimiendo el msj que tiene preestablecido en este caso un string vacio
+
+* Funcion que retorna un valor:
+
+function sumar(a,b){
+        return a + b;
+}
+
+const resultado = sumar(2, 3); // 5 almacenado en la variable resultado
+
+* Añadir Funciones a un objeto
+
+const reproductor = {
+        reproducir: function(id){
+                console.log(`Reproduciendo con el id ${id}`)
+        }
+}
+
+reproductor.reproducir(30);
+
+// output: Reproduciendo con el id 30 
+
+* Arrow Functions
+
+-se omite la palabra function y se coloca => del lado derecho del parentesis
+-cuando tiene una sola linea se pueden omitir las llaves, son opcionales {}
+-cuando tiene una sola linea da por implicito el return
+-cuando tiene un solo parametro los parentesis son opcionales ()
+
+          ************* Flujos de control **************************
+
+*Como deter un if con una funcion
+
+puntaje = 450;
+
+function revisarPuntaje(){
+        if(puntaje > 400){
+                console.log('Excelente!');
+                return;
+        }
+
+        if(puntaje > 300){
+                console.log('Bueno!');
+                return;
+        }
+}
+
+revisarPuntaje();
+
+la condicion que sea cumplida retornara valor y cortara el flujo de ejecucion
+
+* Operador Ternario
+
+condicion ? true : false
+
+
+        ************* Iteradores/Loops **************************
+
+Break: detiene la ejecucion del codigo por completo
+Continue: detiene la ejecucion pero no por completo
+
+*Sintaxis de un for:
+
+for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    
+}
+
+*Sintaxis while
+
+while (condition) {
+    
+}
 
