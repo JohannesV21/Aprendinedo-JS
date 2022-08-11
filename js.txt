@@ -135,11 +135,32 @@ Pudes modificar valores dentro del array con tan solo colocar el nombre y el ind
 
 numeros[3] = 17 
 
-.push() = agrega elementos al final del arrays
+.push() = agrega elementos al final del arrays y devuelve la longitud del arrays
 .unshift() = para agregar elementos al principio del arrays
 .pop() = eliminar ultimo elemento de un arreglo
 .shift() = elimina el primero del arrays
 .splice(2, 1) = toma dos parametros, el primero indica la posicion del indice en la cual deseas empezar a eliminar elemenos, mientras que el segundo parametro indica la cantidad de elementos que deseas eliminar.
+
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+];
+
+carrito.filter(producto => producto.precio === 100) :
+
+El metodo filter, filtra los resultados segun la condicion que se le coloque, en el ejemplo de arriba usamos el metodo filter para recorrer un arrays llamado carrito el cual tiene almanecados en objetos una seria de productos. En este caso estamos filtrando por todos los productos que tengan un precio mayor a 100
+
+carrito.find(producto => producto.precio === 100) :
+
+.find solo retorna el primer elemento que cumpla la condicion a diferencia de .filter que retorna todas las coincidencias posibles
+
+carrito.every(producto => producto.precio < 1000) :
+
+.every retorna un boleano. retorna true solo si todos los productos que estan dentro del arrays cumplen la condicion, si hay por lo menos uno que no cumpla con la condicion retorna false
 
 resultado = [...numeros]; estamos creando un arreglo nuevo con los valores existentes dentro de carrito
 
@@ -188,7 +209,7 @@ const nuevoArreglo = carrito.map(function (producto) {
 DATO: Tanto en arreglos como en objetos se pueden modificar sus valores sin importar si estan declarados en una variable const
 
 
-                 
+                ************* Funciones ************************** 
 
 Son una serie de pocedimientos o instrucciones
 
@@ -225,7 +246,7 @@ numero1.toString() // Esto es un metodo
 
 * Parametros y Argumentos en Funciones
 
-function sumar(a,b){   // a y b son parametros
+function sumar(a,b){           // a y b son parametros
         console.log(2+2);
 }
 
@@ -312,4 +333,9 @@ for (let i = 0; i < array.length; i++) {
 while (condition) {
     
 }
+
+*Sintaxis Do While
+
+la diferencia con el while es que almenos se ejecutara una ves
+
 
